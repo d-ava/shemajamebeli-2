@@ -19,15 +19,34 @@ class MainActivity : AppCompatActivity() {
         var email = binding.editTextemail.text.toString()
 
 
+        fun addUser(){
+            list.add(email)
+            binding.textInfo.text = "USER ADDED"
+
+        }
+
+        fun removeUser(){
+            list.remove(email)
+            binding.textInfo.text = "USER REMOVED"
+
+        }
+
+
         binding.buttonAddUser.setOnClickListener {
 
             if (email in list){
                 Toast.makeText(this, "this user is already exist", Toast.LENGTH_SHORT).show()
 
-            }else list.add(email)
 
+            }else addUser()
 
+       }
 
+        binding.btnRemoveUser.setOnClickListener {
+            if (email in list){
+
+                removeUser()
+            }else  Toast.makeText(this, "this user does not exist", Toast.LENGTH_SHORT).show()
 
         }
 
