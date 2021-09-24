@@ -15,17 +15,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        var userList = mutableListOf<UserData>()
         val list = mutableListOf<String>()
-        var email = binding.editTextemail.text.toString()
 
+        var email = binding.ETemail.text.toString()
+        var name = binding.ETName.text.toString()
+        var age: Int = binding.ETAge.text.toString().toInt()
+        var lastName = binding.ETLastName.text.toString()
 
-        fun addUser(){
+        fun addUser() {
             list.add(email)
             binding.textInfo.text = "USER ADDED"
 
         }
 
-        fun removeUser(){
+        fun removeUser() {
             list.remove(email)
             binding.textInfo.text = "USER REMOVED"
 
@@ -34,19 +38,19 @@ class MainActivity : AppCompatActivity() {
 
         binding.buttonAddUser.setOnClickListener {
 
-            if (email in list){
+            if (email in list) {
                 Toast.makeText(this, "this user is already exist", Toast.LENGTH_SHORT).show()
 
 
-            }else addUser()
+            } else addUser()
 
-       }
+        }
 
         binding.btnRemoveUser.setOnClickListener {
-            if (email in list){
+            if (email in list) {
 
                 removeUser()
-            }else  Toast.makeText(this, "this user does not exist", Toast.LENGTH_SHORT).show()
+            } else Toast.makeText(this, "this user does not exist", Toast.LENGTH_SHORT).show()
 
         }
 

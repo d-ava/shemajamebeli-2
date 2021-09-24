@@ -10,7 +10,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +83,10 @@
         android:hint="@string/enter_age"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewAge" />
+        app:layout_constraintTop_toBottomOf="@id/textViewAge"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/ETemail"
