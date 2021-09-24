@@ -8,6 +8,18 @@
     tools:context=".MainActivity"
     >
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        android:src="@mipmap/ic_sky"
+        android:translationZ="-10dp"
+
+        />
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -47,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/grey"
-        android:hint="enter last name"
+        android:hint="@string/enter_last_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewLastName" />
@@ -57,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Age"
+        android:text="@string/age"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/grey"
-        android:hint="enter Age"
+        android:hint="@string/enter_age"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewAge" />
@@ -78,11 +90,36 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/grey"
-        android:hint="enter e-mail"
+        android:hint="@string/enter_e_mail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@id/editTextAge" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonAddUser"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:text="@string/add_user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintTop_toBottomOf="@id/editTextemail"
+        android:layout_marginTop="30dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:text="@string/remove_user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintTop_toBottomOf="@id/buttonAddUser"
+        android:layout_marginTop="10dp"
+        />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
