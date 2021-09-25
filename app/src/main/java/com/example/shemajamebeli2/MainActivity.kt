@@ -1,5 +1,6 @@
 package com.example.shemajamebeli2
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log.d
@@ -21,29 +22,46 @@ class MainActivity : AppCompatActivity() {
         val age: String = binding.ETage.text.toString()
         val lastName = binding.ETlastName.text.toString()
 
-         val userMat = mutableMapOf<String, List<String>>()
+        fun greenTXT(text: String) {
+            binding.textInfo.setTextColor(Color.GREEN)
+            binding.textInfo.text = text
+        }
+
+        fun redTXT(text: String) {
+            binding.textInfo.setTextColor(Color.RED)
+            binding.textInfo.text = text
+
+        }
+
+        val userMat = mutableMapOf<String, List<String>>()
 
 
         fun addUser() {
 
-            if (email in userMat){
-                binding.textInfo.text = "USER is here"
-            }
-            else {
+            if (email in userMat) {
+                redTXT("user is already here")
+            } else {
 
                 userMat[email] = listOf<String>(name, lastName, age)
-                binding.textInfo.text = "USER ADDED"
+                greenTXT("user added")
 
             }
 
 
-          //  Toast.makeText(this, "$userMat", Toast.LENGTH_LONG).show()
+            //  Toast.makeText(this, "$userMat", Toast.LENGTH_LONG).show()
         }
 
 
         fun removeUser() {
 
-            binding.textInfo.text = "USER REMOVED"
+            if (email in userMat) {
+                userMat.remove(email)
+                greenTXT("bye bye ${userMat[email]}")
+            } else {
+                redTXT("no such user")
+
+            }
+
 
         }
 
@@ -56,7 +74,7 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnRemoveUser.setOnClickListener {
-
+            removeUser()
 
         }
 
