@@ -22,14 +22,16 @@ class MainActivity : AppCompatActivity() {
         val age: String = binding.ETage.text.toString()
         val lastName = binding.ETlastName.text.toString()
 
-        fun greenTXT(text: String) {
-            binding.textInfo.setTextColor(Color.GREEN)
-            binding.textInfo.text = text
-        }
 
-        fun redTXT(text: String) {
-            binding.textInfo.setTextColor(Color.RED)
-            binding.textInfo.text = text
+
+        fun infoTXT(text:String, redGreen:Int){
+            if (redGreen == 0){
+                binding.textInfo.setTextColor(Color.RED)
+                binding.textInfo.text = text
+            }else{
+                binding.textInfo.setTextColor(Color.GREEN)
+                binding.textInfo.text = text
+            }
 
         }
 
@@ -39,16 +41,13 @@ class MainActivity : AppCompatActivity() {
         fun addUser() {
 
             if (email in userMat) {
-                redTXT("user is already here")
+                infoTXT("user is already here",0)
             } else {
 
                 userMat[email] = listOf<String>(name, lastName, age)
-                greenTXT("user added")
-
+                infoTXT("user added",1)
             }
 
-
-            //  Toast.makeText(this, "$userMat", Toast.LENGTH_LONG).show()
         }
 
 
@@ -56,9 +55,9 @@ class MainActivity : AppCompatActivity() {
 
             if (email in userMat) {
                 userMat.remove(email)
-                greenTXT("bye bye ${userMat[email]}")
+                infoTXT("bye bye ${userMat[email]}",1)
             } else {
-                redTXT("no such user")
+                infoTXT("no such user",0)
 
             }
         }
@@ -66,15 +65,14 @@ class MainActivity : AppCompatActivity() {
         fun updateUser(){
             if (email in userMat){
                 userMat[email]= listOf<String>(name, lastName, age)
-                greenTXT("user $email has been updated")
+                infoTXT("user $email has been updated",1)
             }else{
-                redTXT("no such user")
+                infoTXT("no such user",0)
             }
         }
 
 
         binding.btnAddUser.setOnClickListener {
-
             addUser()
         }
 
