@@ -16,7 +16,18 @@ class MainActivity : AppCompatActivity() {
        // binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        fun infoTXT(text:String, redGreen:Int){
+        val userMap = mutableMapOf<String, String>()
+
+        binding.btnAddUser.setOnClickListener {
+            val email:String = binding.ETeMail.text.toString()
+            val name:String = binding.ETName.text.toString()
+
+            userMap[email] = name
+
+            binding.additionalTextInfo.text = "map $userMap"
+        }
+
+    /*    fun infoTXT(text:String, redGreen:Int){
             if (redGreen == 0){
                 binding.textInfo.setTextColor(Color.RED)
                 binding.textInfo.text = text
@@ -28,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val email = binding.ETeMail.text.toString()
+        val email:String = binding.ETeMail.text.toString()
         val name = binding.ETName.text.toString()
         val age: String = binding.ETage.text.toString()
         val lastName = binding.ETlastName.text.toString()
@@ -89,7 +100,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnUpdateUser.setOnClickListener {
             updateUser()
         }
-
+*/
 
     }
 }
