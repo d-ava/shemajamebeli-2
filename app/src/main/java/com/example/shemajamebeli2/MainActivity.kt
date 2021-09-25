@@ -2,6 +2,7 @@ package com.example.shemajamebeli2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log.d
 import android.widget.Toast
 import com.example.shemajamebeli2.databinding.ActivityMainBinding
 
@@ -15,42 +16,47 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        var userList = mutableListOf<UserData>()
-        val list = mutableListOf<String>()
+        val email = binding.ETeMail.text.toString()
+        val name = binding.ETName.text.toString()
+        val age: String = binding.ETage.text.toString()
+        val lastName = binding.ETlastName.text.toString()
 
-        var email = binding.ETemail.text.toString()
-        var name = binding.ETName.text.toString()
-        var age: Int = binding.ETAge.text.toString().toInt()
-        var lastName = binding.ETLastName.text.toString()
+         val userMat = mutableMapOf<String, List<String>>()
+
 
         fun addUser() {
-            list.add(email)
-            binding.textInfo.text = "USER ADDED"
 
+            if (email in userMat){
+                binding.textInfo.text = "USER is here"
+            }
+            else {
+
+                userMat[email] = listOf<String>(name, lastName, age)
+                binding.textInfo.text = "USER ADDED"
+
+            }
+
+
+          //  Toast.makeText(this, "$userMat", Toast.LENGTH_LONG).show()
         }
 
+
         fun removeUser() {
-            list.remove(email)
+
             binding.textInfo.text = "USER REMOVED"
 
         }
 
 
-        binding.buttonAddUser.setOnClickListener {
+        binding.btnAddUser.setOnClickListener {
 
-            if (email in list) {
-                Toast.makeText(this, "this user is already exist", Toast.LENGTH_SHORT).show()
-
-
-            } else addUser()
-
+            addUser()
         }
 
-        binding.btnRemoveUser.setOnClickListener {
-            if (email in list) {
 
-                removeUser()
-            } else Toast.makeText(this, "this user does not exist", Toast.LENGTH_SHORT).show()
+
+        binding.btnRemoveUser.setOnClickListener {
+
 
         }
 
