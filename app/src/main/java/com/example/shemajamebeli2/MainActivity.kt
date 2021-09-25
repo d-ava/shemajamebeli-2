@@ -3,26 +3,18 @@ package com.example.shemajamebeli2
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log.d
-import android.widget.Toast
 import com.example.shemajamebeli2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    //private lateinit var binding: ActivityMainBinding
+
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+       // binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-        val email = binding.ETeMail.text.toString()
-        val name = binding.ETName.text.toString()
-        val age: String = binding.ETage.text.toString()
-        val lastName = binding.ETlastName.text.toString()
-
-
 
         fun infoTXT(text:String, redGreen:Int){
             if (redGreen == 0){
@@ -35,27 +27,40 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        val userMat = mutableMapOf<String, List<String>>()
+
+        val email = binding.ETeMail.text.toString()
+        val name = binding.ETName.text.toString()
+        val age: String = binding.ETage.text.toString()
+        val lastName = binding.ETlastName.text.toString()
+
+
+        val userMap = mutableMapOf<String, List<String>>()
 
 
         fun addUser() {
 
-            if (email in userMat) {
+            if (email in userMap.keys) {
                 infoTXT("user is already here",0)
             } else {
 
-                userMat[email] = listOf<String>(name, lastName, age)
+                userMap[email] = listOf<String>(name, lastName, age)
                 infoTXT("user added",1)
+                    // binding.additionalTextInfo.text = "map $userMap"
             }
 
         }
+        binding.btnAddUser.setOnClickListener {
+            addUser()
+        }
+
+
 
 
         fun removeUser() {
 
-            if (email in userMat) {
-                userMat.remove(email)
-                infoTXT("bye bye ${userMat[email]}",1)
+            if (email in userMap.keys) {
+                userMap.remove(email)
+                infoTXT("bye bye ${userMap[email]}",1)
             } else {
                 infoTXT("no such user",0)
 
@@ -63,8 +68,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         fun updateUser(){
-            if (email in userMat){
-                userMat[email]= listOf<String>(name, lastName, age)
+            if (email in userMap.keys){
+                userMap[email]= listOf<String>(name, lastName, age)
                 infoTXT("user $email has been updated",1)
             }else{
                 infoTXT("no such user",0)
@@ -72,9 +77,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        binding.btnAddUser.setOnClickListener {
-            addUser()
-        }
+
 
 
 
