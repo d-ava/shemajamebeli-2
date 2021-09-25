@@ -61,8 +61,15 @@ class MainActivity : AppCompatActivity() {
                 redTXT("no such user")
 
             }
+        }
 
-
+        fun updateUser(){
+            if (email in userMat){
+                userMat[email]= listOf<String>(name, lastName, age)
+                greenTXT("user $email has been updated")
+            }else{
+                redTXT("no such user")
+            }
         }
 
 
@@ -76,6 +83,10 @@ class MainActivity : AppCompatActivity() {
         binding.btnRemoveUser.setOnClickListener {
             removeUser()
 
+        }
+
+        binding.btnUpdateUser.setOnClickListener {
+            updateUser()
         }
 
 
