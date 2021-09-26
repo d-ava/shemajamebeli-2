@@ -112,7 +112,7 @@
         android:id="@+id/btnAddUser"
 
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_marginTop="5dp"
         android:background="@color/black"
         android:inputType="textEmailAddress"
@@ -125,7 +125,7 @@
         android:id="@+id/btnRemoveUser"
 
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_marginTop="10dp"
         android:background="@color/black"
         android:inputType="textEmailAddress"
@@ -138,7 +138,7 @@
         android:id="@+id/btnUpdateUser"
 
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_marginTop="10dp"
         android:background="@color/black"
         android:inputType="textEmailAddress"
