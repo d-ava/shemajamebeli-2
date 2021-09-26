@@ -56,6 +56,24 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        binding.btnUpdateUser.setOnClickListener {
+            val email: String = binding.ETeMail.text.toString()
+            val name: String = binding.ETName.text.toString()
+            val age: String = binding.ETage.text.toString()
+            val lastName = binding.ETlastName.text.toString()
+
+            if (email in userMap.keys){
+                userMap[email]= listOf<String>(name, lastName, age)
+                binding.textInfo.setTextColor(Color.GREEN)
+                binding.textInfo.text = "USER upadeted"
+                binding.additionalTextInfo.text = "userlist $userMap"
+            }else{
+                binding.textInfo.setTextColor(Color.RED)
+                binding.textInfo.text = "nu such user$email"
+            }
+
+        }
+
 
 
 
